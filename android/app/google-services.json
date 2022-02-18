@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "504941475648",
+    "project_id": "flutter-futsal",
+    "storage_bucket": "flutter-futsal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504941475648:android:129d2a7cf0b5c86413aca5",
+        "android_client_info": {
+          "package_name": "com.rsyah.futsal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504941475648-nu76b05e6t3e414sk8et7gfakeqjoo14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsyah.futsal",
+            "certificate_hash": "abe31defa64f4d9095fa1caa273f1a4f2daf724b"
+          }
+        },
+        {
+          "client_id": "504941475648-cjqiaq4s4j7g553n3hrbj2rtou34vq03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1P8imMUDwsq2jXQoGmVMp7Is8sqMRRRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504941475648-cjqiaq4s4j7g553n3hrbj2rtou34vq03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
