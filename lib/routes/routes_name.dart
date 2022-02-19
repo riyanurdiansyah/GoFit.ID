@@ -4,4 +4,6 @@ abstract class AppRoutesName {
   static const signout = "/signout";
   static const dashboard = "/dashboard";
   static const detail = "/detail";
+  static const menu = "/menu";
+  static const search = "/search";
 }

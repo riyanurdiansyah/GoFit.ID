@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:futsal_app/controllers/detail_c.dart';
 import 'package:futsal_app/models/lapangan_m.dart';
 import 'package:futsal_app/service/detail_service.dart';
+import 'package:futsal_app/utils/app_const.dart';
 import 'package:futsal_app/utils/app_dateext.dart';
 import 'package:futsal_app/utils/app_text.dart';
-import 'package:futsal_app/views/detail/widgets/date_card.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:intl/intl.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
@@ -22,6 +23,15 @@ class DetailScreen extends StatelessWidget {
     final _detailC = Get.find<DetailC>();
     List<int> _schedulePagi = List.generate(8, (index) => 8 + index * 1);
     List<int> _scheduleSore = List.generate(9, (index) => 16 + index * 1);
+
+    DateTime weekdayOf(DateTime time, int weekday) =>
+        time.add(Duration(days: weekday - time.weekday));
+    DateTime fridayOf(DateTime time) => weekdayOf(time, 5);
+    DateTime saturdayOf(DateTime time) => weekdayOf(time, 6);
+    DateTime firstMonthDayOf(DateTime time) =>
+        DateTime(time.year, time.month, 1);
+    DateTime lastMonthDayOf(DateTime time) =>
+        DateTime(time.year, time.month + 1, 0);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -95,8 +105,8 @@ class DetailScreen extends StatelessWidget {
                                 effect: WormEffect(
                                   dotWidth: 10,
                                   dotHeight: 10,
-                                  dotColor: Colors.grey,
-                                  activeDotColor: Colors.blue.shade600,
+                                  dotColor: Colors.grey.shade500,
+                                  activeDotColor: Colors.grey.shade100,
                                 ),
                               ),
                             ),
@@ -260,10 +270,28 @@ class DetailScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                           horizontal: 15,
                         ),
-                        child: AppText.labelMontsW500(
-                          "Pagi ~ Siang",
-                          16,
-                          Colors.black,
+                        child: Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppText.labelMontsW500(
+                                "Pagi ~ Siang",
+                                12,
+                                Colors.black,
+                              ),
+                              AppText.labelMontsW500(
+                                currencyFormatter.format(_detailC
+                                                .selectedDate.value.weekday ==
+                                            DateTime.saturday ||
+                                        _detailC.selectedDate.value.weekday ==
+                                            DateTime.sunday
+                                    ? _lapanganM.price! + _lapanganM.weekend!
+                                    : _lapanganM.price!),
+                                14,
+                                Colors.grey.shade500,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -342,10 +370,31 @@ class DetailScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                           horizontal: 15,
                         ),
-                        child: AppText.labelMontsW500(
-                          "Sore ~ Malem",
-                          16,
-                          Colors.black,
+                        child: Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppText.labelMontsW500(
+                                "Sore ~ Malem",
+                                12,
+                                Colors.black,
+                              ),
+                              AppText.labelMontsW500(
+                                currencyFormatter.format(
+                                  _detailC.selectedDate.value.weekday ==
+                                              DateTime.saturday ||
+                                          _detailC.selectedDate.value.weekday ==
+                                              DateTime.sunday
+                                      ? _lapanganM.price! +
+                                          _lapanganM.weekend! +
+                                          _lapanganM.night!
+                                      : _lapanganM.price! + _lapanganM.night!,
+                                ),
+                                14,
+                                Colors.grey.shade500,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(

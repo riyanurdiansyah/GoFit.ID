@@ -11,7 +11,8 @@ class LapanganM {
     this.dp,
     this.idMitra,
     this.price,
-    this.priceWeekend,
+    this.weekend,
+    this.night,
     this.image,
     this.categoryName,
     this.name,
@@ -27,7 +28,8 @@ class LapanganM {
   bool? dp;
   String? idMitra;
   int? price;
-  int? priceWeekend;
+  int? weekend;
+  int? night;
   List<dynamic>? image;
   String? categoryName;
   String? name;
@@ -43,7 +45,8 @@ class LapanganM {
         dp: json["dp"],
         idMitra: json["idMitra"],
         price: json["price"],
-        priceWeekend: json["priceWeekend"],
+        weekend: json["weekend"],
+        night: json["night"],
         image: json["image"],
         categoryName: json["categoryName"],
         name: json["name"],

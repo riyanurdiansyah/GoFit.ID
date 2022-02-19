@@ -16,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
     final _dashboardC = Get.find<DashboardC>();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade100,
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -58,24 +58,25 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: () {
-                      print("object");
-                    },
-                    child: const Icon(
+                    onTap: () => Get.toNamed(AppRoutesName.search),
+                    child: Icon(
                       CupertinoIcons.search,
-                      color: Colors.black,
+                      color: Colors.grey.shade500,
                     ),
                   ),
                   const SizedBox(
-                    width: 12,
+                    width: 15,
                   ),
                   GestureDetector(
-                    onTap: () {},
-                    child: const Icon(
+                    onTap: () => Get.toNamed(AppRoutesName.menu),
+                    child: Icon(
                       CupertinoIcons.square_grid_2x2_fill,
-                      color: Colors.black87,
+                      color: Colors.grey.shade500,
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
                 ],
               ),
               const SizedBox(
@@ -138,7 +139,7 @@ class DashboardScreen extends StatelessWidget {
                             ),
                             const Icon(
                               FontAwesomeIcons.teamspeak,
-                              color: Colors.grey,
+                              color: Colors.black,
                             ),
                           ],
                         ),
@@ -209,7 +210,7 @@ class DashboardScreen extends StatelessWidget {
                                           );
                                         },
                                         child: SizedBox(
-                                          width: Get.size.width / 2.2,
+                                          width: Get.size.width / 1.6,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -217,7 +218,7 @@ class DashboardScreen extends StatelessWidget {
                                               Expanded(
                                                 flex: 5,
                                                 child: SizedBox(
-                                                  width: Get.size.width / 2.2,
+                                                  width: Get.size.width / 1.6,
                                                   child: Hero(
                                                     tag: _data.image![0],
                                                     child: Image.network(
@@ -245,7 +246,7 @@ class DashboardScreen extends StatelessWidget {
                                                           AppText
                                                               .labelMontsW500(
                                                             _data.name!,
-                                                            14,
+                                                            16,
                                                             Colors.black,
                                                           ),
                                                           AppText.labelMonts(
@@ -266,7 +267,7 @@ class DashboardScreen extends StatelessWidget {
                                                       const SizedBox(
                                                         width: 4,
                                                       ),
-                                                      AppText.labelMonts(
+                                                      AppText.labelMontsW500(
                                                         "${_data.rating!}",
                                                         12,
                                                         Colors.grey.shade600,
